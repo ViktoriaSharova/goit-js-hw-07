@@ -9,12 +9,12 @@ container.addEventListener('click', handleGalleryClick);
 
 function createMarkup (arr) {
     return arr.map(({ preview, original, description }) => {
-        return `<li data-preview="${preview}" class="gallery__item js-gallery-item">
-                  <a class="gallery__link" href="${original}">
+        return `<li data-preview='${preview}' class="gallery__item js-gallery-item">
+                  <a class="gallery__link" href='${original}'>
                     <img class="gallery__image"
-                     src="${preview}"
-                     data-source="${original}"
-                    alt="${description}">
+                     src='${preview}'
+                     data-source='${original}'
+                    alt='${description}'>
                   </a>
                 </li>`
     }).join('');
@@ -22,6 +22,7 @@ function createMarkup (arr) {
 
 
 function handleGalleryClick(event) {
+  event.preventDefault();
   if (event.target === event.currentTarget){
     return;
   }
@@ -32,7 +33,7 @@ function handleGalleryClick(event) {
   
   const instance = basicLightbox.create(` 
     <div class="modal">
-    <img src="${galleryInfo.original}" alt="${galleryInfo.description}" />
+    <img src='${galleryInfo.original}' alt='${galleryInfo.description}' />
     </div>
   `); 
   instance.show();
